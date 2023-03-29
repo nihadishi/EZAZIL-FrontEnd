@@ -72,37 +72,41 @@ const Header = () => {
 
     return (
         <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
-            <ContentWrapper>
-                <div className="logo" onClick={() => navigate("/")}>
-                    <img src={logo} alt="" />
-                </div>
-                <ul className="menuItems">
-                    <li
-                        className="menuItem"
-                        onClick={() => navigationHandler("movie")}
-                    >
-                        Movies
-                    </li>
-                    <li
-                        className="menuItem"
-                        onClick={() => navigationHandler("tv")}
-                    >
-                        TV Shows
-                    </li>
-                    <li className="menuItem">
-                        <HiOutlineSearch onClick={openSearch} />
-                    </li>
-                </ul>
 
-                <div className="mobileMenuItems">
+            <div className="mobile-menu-container">
+                <ContentWrapper>
+                    <div className="logo" onClick={() => navigate("/")}>
+                        <img src={logo} alt="" />
+
+                    </div>
+                    <div className="mobileMenuItems">
+                        <HiOutlineSearch onClick={openSearch} />
+                        {mobileMenu ? (
+                            <VscChromeClose onClick={() => setMobileMenu(false)} />
+                        ) : (
+                            <SlMenu onClick={openMobileMenu} />
+                        )}
+                    </div>
+                </ContentWrapper>
+            </div>
+            <ul className="menuItems">
+                <li
+                    className="menuItem"
+                    onClick={() => navigationHandler("movie")}
+                >
+                    Movies
+                </li>
+                <li
+                    className="menuItem"
+                    onClick={() => navigationHandler("tv")}
+                >
+                    TV Shows
+                </li>
+                <li className="menuItem">
                     <HiOutlineSearch onClick={openSearch} />
-                    {mobileMenu ? (
-                        <VscChromeClose onClick={() => setMobileMenu(false)} />
-                    ) : (
-                        <SlMenu onClick={openMobileMenu} />
-                    )}
-                </div>
-            </ContentWrapper>
+                </li>
+            </ul>
+
             {showSearch && (
                 <div className="searchBar">
                     <ContentWrapper>
