@@ -7,7 +7,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import "./style.scss";
 
 import ContentWrapper from "../contentWrapper/ContentWrapper";
-import logo from "../../assets/logo.png";
+import logo from "../../assets/logoMain.png";
 
 const Header = () => {
     const [show, setShow] = useState("top");
@@ -73,8 +73,8 @@ const Header = () => {
     return (
         <header className={`header ${mobileMenu ? "mobileView" : ""} ${show}`}>
 
-            <div className="mobile-menu-container">
-                <ContentWrapper>
+            <ContentWrapper>
+                <div className="menu-container">
                     <div className="logo" onClick={() => navigate("/")}>
                         <img src={logo} alt="" />
 
@@ -87,25 +87,46 @@ const Header = () => {
                             <SlMenu onClick={openMobileMenu} />
                         )}
                     </div>
-                </ContentWrapper>
-            </div>
-            <ul className="menuItems">
-                <li
-                    className="menuItem"
-                    onClick={() => navigationHandler("movie")}
-                >
-                    Movies
-                </li>
-                <li
-                    className="menuItem"
-                    onClick={() => navigationHandler("tv")}
-                >
-                    TV Shows
-                </li>
-                <li className="menuItem">
-                    <HiOutlineSearch onClick={openSearch} />
-                </li>
-            </ul>
+                    <ul className="menuItems">
+                        <li
+                            className="menuItem"
+                            onClick={() => navigationHandler("movie")}
+                        >
+                            Movies
+                        </li>
+                        <li
+                            className="menuItem"
+                            onClick={() => navigationHandler("tv")}
+                        >
+                            TV Shows
+                        </li>
+                        <li className="menuItem">
+                            <HiOutlineSearch onClick={openSearch} />
+                        </li>
+                    </ul>
+                </div>
+            </ContentWrapper>
+
+            <ContentWrapper>
+                <ul className="menuItemsMain">
+                    <li
+                        className="menuItem"
+                        onClick={() => navigationHandler("movie")}
+                    >
+                        Movies
+                    </li>
+                    <li
+                        className="menuItem"
+                        onClick={() => navigationHandler("tv")}
+                    >
+                        TV Shows
+                    </li>
+                    <li className="menuItem">
+                        <HiOutlineSearch onClick={openSearch} />
+                    </li>
+                </ul>
+            </ContentWrapper>
+
 
             {showSearch && (
                 <div className="searchBar">
