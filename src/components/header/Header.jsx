@@ -64,6 +64,9 @@ const Header = () => {
     const navigationHandler = (type) => {
         if (type === "movie") {
             navigate("/explore/movie");
+        }
+        else if (type === "venue") {
+            navigate("/venue")
         } else {
             navigate("/explore/tv");
         }
@@ -100,8 +103,11 @@ const Header = () => {
                         >
                             TV Shows
                         </li>
-                        <li className="menuItem">
-                            <HiOutlineSearch onClick={openSearch} />
+                        <li
+                            className="menuItem"
+                            onClick={() => navigationHandler("venue")}
+                        >
+                            Venues
                         </li>
                     </ul>
                 </div>
